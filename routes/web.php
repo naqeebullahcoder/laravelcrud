@@ -17,11 +17,15 @@ use App\Http\Controllers\StudentController;
 
 ;
 
-Route::get('student',[App\Http\Controllers\StudentController::class, 'index']);
-Route::get('student/create',[App\Http\Controllers\StudentController::class, 'create']);
-Route::post('student/store',[App\Http\Controllers\StudentController::class, 'store'])->name('student.store');
-Route::get('student/edit/{id}',[App\Http\Controllers\StudentController::class, 'edit']);
-Route::post('student/update',[App\Http\Controllers\StudentController::class, 'update'])->name('student.update');
-Route::get('student/delete/{id}',[App\Http\Controllers\StudentController::class, 'destroy']);
-Route::get('student/show/{id}',[App\Http\Controllers\StudentController::class, 'show']);
+Route::group(['prefix' => '/student'], function(){
+
+    Route::get('/',[App\Http\Controllers\StudentController::class, 'index']);
+    Route::get('create',[App\Http\Controllers\StudentController::class, 'create']);
+    Route::post('store',[App\Http\Controllers\StudentController::class, 'store'])->name('student.store');
+    Route::get('edit/{id}',[App\Http\Controllers\StudentController::class, 'edit']);
+    Route::post('update',[App\Http\Controllers\StudentController::class, 'update'])->name('student.update');
+    Route::get('delete/{id}',[App\Http\Controllers\StudentController::class, 'destroy']);
+    Route::get('show/{id}',[App\Http\Controllers\StudentController::class, 'show']);
+});
+
 
